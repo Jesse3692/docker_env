@@ -29,8 +29,12 @@ services:
 
 volumes:
   sonarqube_data:
+    name: sonarqube_data
   sonarqube_extensions:
+    name: sonarqube_extensions
   sonarqube_logs:
+    name: sonarqube_logs
   sonarqube_temp:
+    name: sonarqube_temp
   # postgresql:
   # postgresql_data:
