@@ -1,0 +1,42 @@
+version: '3.4'
+services: 
+  elasticsearch:
+    build: ./
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - es_net
+  kibana:
+    image: kibana:7.3.2
+    container_name: kibana
+    ports:
+      - 5601:5601
+    environment:
+      - server.name=kibana
+      - server.host=0
+      - elasticsearch.hosts=["http://elasticsearch:9200"]
+      - xpack.monitoring.ui.container.elasticsearch.enabled=true
+      - i18n.locale=zh-CN
+    depends_on: 
+      elasticsearch
+    networks:
+      - es_net
+
+networks: 
+  es_net:
+    
+volumes: 
+  elasticsearch_data:
+    name: elasticsearch_data
