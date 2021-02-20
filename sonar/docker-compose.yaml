@@ -16,7 +16,7 @@ services:
       - sonarqube_logs:/opt/sonarqube/logs
       - sonarqube_temp:/opt/sonarqube/temp
     ports:
-      - "9000:9000"
+      - 9090:9000
   # db:
   #   image: postgres:12
   #   restart: on-failure
