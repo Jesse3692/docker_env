@@ -1,0 +1,15 @@
+version: '3.4'
+services: 
+  snowflake: 
+    build: ./
+    container_name: snowflake
+    volumes: 
+      - snowflake-logs:/opt/logs/
+    ports: 
+      - 8910:8910
+    restart: on-failure
+  
+
+volumes: 
+  snowflake-logs:
+    name: snowflake-logs
