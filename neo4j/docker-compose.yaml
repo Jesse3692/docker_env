@@ -1,7 +1,7 @@
 version: "3"
 services:
   neo4j:
-    image: neo4j:4.2.3
+    image: neo4j:4.1.1
     container_name: neo4j
     volumes:
       - neo4j_import:/var/lib/neo4j/import

@@ -1,0 +1,18 @@
+version: '3.4'
+services: 
+    redis:
+      image: redis:3.2 # Redis镜像
+      container_name: redis # Redis容器名称
+      command: redis-server /usr/local/etc/redis/redis.conf # 使用配置文件启动redi
+      volumes:
+        - redis_data:/data #挂载 Redis数据
+        - ./redis.conf:/usr/local/etc/redis/redis.conf #挂载 Redis配置
+      ports:
+        - 6379:6379 # 端口映射
+      restart: on-failure
+
+
+    
+volumes: 
+  redis_data:
+    name: redis_data
