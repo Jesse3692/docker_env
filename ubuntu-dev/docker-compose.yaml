@@ -1,0 +1,13 @@
+version: "3.4"
+services:
+  ubuntu_dev:
+    image: ubuntu:20.04 # 镜像
+    container_name: ubuntu_dev # Redis容器名称
+    volumes:
+      - ubuntu_dev:/c_note #挂载 Redis数据
+    restart: on-failure
+    tty: true
+
+volumes:
+  ubuntu_dev:
+    name: ubuntu_dev
